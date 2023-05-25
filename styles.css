@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.loader {
+    /* Стили для отображения лоадера */
+    position: relative;
+    left: 550px;
+    top: 7.5vh;
+    height: 85vh;
+    width: 410px;
+    background: center / contain no-repeat url('https://i.gifer.com/YCZH.gif ');  
+  }
+  
+  .image-container {
+    position: relative;
+    height: 85vh;
+    width: 410px;
+    left: 550px;
+    top: 7.5vh;
+    display: none;
+  }
+
+  #black-and-white {
+    position: absolute;
+    height: 85vh;
+    width: 410px;
+    object-fit: cover;
+  }
+
+  #color {
+    position: absolute;
+    height: 85vh;
+    width: 205px;
+    object-fit: cover;
+    object-position: left;
+    min-width: 3px;
+    max-width: 407px;
+  }
+  
+  #divider {
+    position: relative;
+    left: 205px;
+    width: 3px;
+    height: 100%;
+    background-color: gray;
+    cursor: ew-resize;
+  }
+  
