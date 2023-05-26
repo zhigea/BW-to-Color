@@ -1,12 +1,12 @@
 window.addEventListener('load', function() {
       const loader = document.querySelector('.loader');
       const imageContainer = document.querySelector('.image-container');
+      const downloadError = document.querySelector('.download-error');
       const dividerMinX = 0;
       const dividerMaxX = 407;
 
       // Загрузка изображений
-      // ЧБ ссылка недоступна поэтому скачал цветную, сделал ее ЧБ и добавил в html локально
-      const promise1 = fetch('https://sites-cf.mhcache.com/e/1/az1zaXRlc192MSZzPWMzYzU1ZDM4MmYyMzY0NjY5MWE3MGRlNzZhNTEzNTg0MjIxNGMxMDAzNTc3MjQxN2NhZDdlY2RjZTQ5MmFmNjcmZT0xNjg0ODQ2ODAw/122/173/8202/500013_9387431j1x531w460100g1_A.jpg')
+      const promise1 = fetch('https://sites-cf.mhcache.com/e/1/az1zaXRlc192MSZzPTZlNzA5ZTA2Y2FmYjA0YTE3ZGZhYjYxYzZlYzBmYzQ0NjEyMDdjNzVlOTY4MTgyNGE2YTA3NmY0ZDMzMTZmYTEmZT0xNjg1NzE4MDAw/122/173/8202/500013_9387431j1x531w460100g1_A.jpg')
       .then(responce => responce.blob())
         .then(blob => {
           const blackAndWhiteImage = document.getElementById('black-and-white');
@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
         })
         .catch(error => {
           console.log('Ошибка:', error);
+          downloadError.style.display = 'flex';
         })
 
         Promise.all([promise1, promise2])

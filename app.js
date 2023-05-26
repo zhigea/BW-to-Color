@@ -7,10 +7,6 @@ window.addEventListener('load', function() {
   const urlImageBW = 'https://sites-cf.mhcache.com/e/1/az1zaXRlc192MSZzPTZlNzA5ZTA2Y2FmYjA0YTE3ZGZhYjYxYzZlYzBmYzQ0NjEyMDdjNzVlOTY4MTgyNGE2YTA3NmY0ZDMzMTZmYTEmZT0xNjg1NzE4MDAw/122/173/8202/500013_9387431j1x531w460100g1_A.jpg';
   const urlImageColor = 'https://sites-cf.mhcache.com/t/738/202/1221738202/500/500013_749062o406111cau6c32v0_A_1024x1536/filters:watermark(/watermarks/logo.png,-2p,-2p,0,0,5):watermark(/watermarks/palette.png,2p,-2p,5,0,5)/xuTjNZntCr2-JGE_6tio_ngljJ0=/.jpg';
 
-  loader.style.display = 'flex';
-  imageContainer.style.display = 'none';
-  downloadError.style.display = 'none';
-
   // Функция для загрузки и добавления картинок к элементам <img>
   async function addImagesToElements() {
     try {
