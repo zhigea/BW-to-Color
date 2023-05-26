@@ -7,29 +7,34 @@ window.addEventListener('load', function() {
   // пока недоступна ЧБ, обе ссылки на цветную картинку
   const urlImageBW = 'https://sites-cf.mhcache.com/t/738/202/1221738202/500/500013_749062o406111cau6c32v0_A_1024x1536/filters:watermark(/watermarks/logo.png,-2p,-2p,0,0,5):watermark(/watermarks/palette.png,2p,-2p,5,0,5)/xuTjNZntCr2-JGE_6tio_ngljJ0=/.jpg';
   const urlImageColor = 'https://sites-cf.mhcache.com/t/738/202/1221738202/500/500013_749062o406111cau6c32v0_A_1024x1536/filters:watermark(/watermarks/logo.png,-2p,-2p,0,0,5):watermark(/watermarks/palette.png,2p,-2p,5,0,5)/xuTjNZntCr2-JGE_6tio_ngljJ0=/.jpg';
+  loader.style.display = 'flex';
+  imageContainer.style.display = 'none';
 
   // Загрузка изображений
 
   // Функция для загрузки картинки по URL и получения данных в формате Blob
-  async function fetchImage(url) {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    return blob;
-  }
+  // async function fetchImage(url) {
+  //   const response = fetch(url);
+  //   const blob = await response.blob();
+  //   return blob;
+  // }
 
-  // Функция для проверки успешной загрузки картинки
-  function checkImageLoaded(imageElement) {
-    return new Promise((resolve, reject) => {
-      imageElement.onload = resolve;
-      imageElement.onerror = reject;
-    });
-  }
+  // // Функция для проверки успешной загрузки картинки
+  // function checkImageLoaded(imageElement) {
+  //   return new Promise((resolve, reject) => {
+  //     imageElement.onload = resolve;
+  //     imageElement.onerror = reject;
+  //   });
+  // }
 
   // Функция для загрузки и добавления картинок к элементам <img>
   async function addImagesToElements() {
     try {
-      const blobImageBW = await fetchImage(urlImageBW);
-      const blobImageColor = await fetchImage(urlImageColor);
+      const responseBW = fetch(urlImageBW);
+      const blobImageBW = responseBW.blob();
+
+      const responseColor = fetch(urlImageColor);
+      const blobImageColor = responseColor.blob();
 
       // Получение ссылок на элементы <img> из HTML-кода
       const imageBW = document.getElementById('black-and-white');
@@ -40,14 +45,10 @@ window.addEventListener('load', function() {
       imageColor.src = URL.createObjectURL(blobImageColor);
 
       // Ожидание загрузки обеих картинок
-      await Promise.all([
-        checkImageLoaded(imageBW),
-        checkImageLoaded(imageColor)
-      ]);
-
-      await function() {
-        return new Promise((r) => {setTimeout(() => {r()}, 1500)});
-      }
+      // await Promise.all([
+      //   checkImageLoaded(imageBW),
+      //   checkImageLoaded(imageColor)
+      // ]);
 
       console.log('Обе картинки успешно загружены и добавлены к элементам <img>');
 
@@ -55,8 +56,11 @@ window.addEventListener('load', function() {
       console.error('Ошибка загрузки или добавления картинок:', error);
     }
 
-    loader.style.display = 'none';
-    imageContainer.style.display = 'flex';
+    () => {
+      return new Promise((p) => {setTimeout(() => {p()}, 1500)});
+    }
+   loader.style.display = 'none';
+   imageContainer.style.display = 'flex';
 
   }
 

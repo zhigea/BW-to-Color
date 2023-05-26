@@ -11,6 +11,7 @@
     height: 85vh;
     width: 410px;
     background: center / contain no-repeat url('https://i.gifer.com/YCZH.gif ');  
+    /* display: none; */
   }
   
   .image-container {
@@ -19,7 +20,7 @@
     width: 410px;
     left: 550px;
     top: 7.5vh;
-    display: none;
+    /* display: none; */
   }
 
   #black-and-white {
