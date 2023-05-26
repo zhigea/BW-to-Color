@@ -27,6 +27,7 @@ window.addEventListener('load', function() {
         })
         .catch(error => {
           console.log('Ошибка:', error);
+          loader.style.display = 'none';
           downloadError.style.display = 'flex';
         })
 

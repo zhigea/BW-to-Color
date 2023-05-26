@@ -31,6 +31,7 @@ window.addEventListener('load', function() {
 
     } catch (error) {
             console.error('Ошибка загрузки или добавления картинок:', error);
+            loader.style.display = 'none';
             downloadError.style.display = 'flex';
     } finally {
       loader.style.display = 'none';
