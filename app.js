@@ -28,14 +28,13 @@ window.addEventListener('load', function() {
       imageColor.src = URL.createObjectURL(blobImageColor);
 
       console.log('Обе картинки успешно загружены и добавлены к элементам <img>');
+      imageContainer.style.display = 'flex';
 
     } catch (error) {
             console.error('Ошибка загрузки или добавления картинок:', error);
-            loader.style.display = 'none';
-            downloadError.style.display = 'flex';
+            downloadError.style.display = 'block';
     } finally {
       loader.style.display = 'none';
-      imageContainer.style.display = 'flex';
     }
   }
 

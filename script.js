@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
       const dividerMaxX = 407;
 
       // Загрузка изображений
-      const promise1 = fetch('https://sites-cf.mhcache.com/e/1/az1zaXRlc192MSZzPTZlNzA5ZTA2Y2FmYjA0YTE3ZGZhYjYxYzZlYzBmYzQ0NjEyMDdjNzVlOTY4MTgyNGE2YTA3NmY0ZDMzMTZmYTEmZT0xNjg1NzE4MDAw/122/173/8202/500013_9387431j1x531w460100g1_A.jpg')
+      const promise1 = fetch('https://sites-cf.mhcache.com/t/738/202/1221738202/500/500013_749062o406111cau6c32v0_A_1024x1536/filters:watermark(/watermarks/logo.png,-2p,-2p,0,0,5):watermark(/watermarks/palette.png,2p,-2p,5,0,5)/xuTjNZntCr2-JGE_6tio_ngljJ0=/.jpg')
       .then(responce => responce.blob())
         .then(blob => {
           const blackAndWhiteImage = document.getElementById('black-and-white');
@@ -14,6 +14,10 @@ window.addEventListener('load', function() {
         })
         .catch(error => {
           console.log('Ошибка:', error);
+          downloadError.style.display = 'block';
+          loader.style.display = 'none';
+          throw new Error(('Не удалось загрузить ЧБ картинку'));
+
         });
 
       const promise2 = fetch('https://sites-cf.mhcache.com/t/738/202/1221738202/500/500013_749062o406111cau6c32v0_A_1024x1536/filters:watermark(/watermarks/logo.png,-2p,-2p,0,0,5):watermark(/watermarks/palette.png,2p,-2p,5,0,5)/xuTjNZntCr2-JGE_6tio_ngljJ0=/.jpg')
@@ -27,12 +31,13 @@ window.addEventListener('load', function() {
         })
         .catch(error => {
           console.log('Ошибка:', error);
+          downloadError.style.display = 'block';
           loader.style.display = 'none';
-          downloadError.style.display = 'flex';
+          throw new Error(('Не удалось загрузить цветную картинку'));
         })
 
         Promise.all([promise1, promise2])
-        .finally(() => {
+        .then(() => {
           loader.style.display = 'none';
           imageContainer.style.display = 'flex';
         })
